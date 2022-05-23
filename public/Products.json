@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/4F0WJ5j/desktop-graphics.jpg",
+      "name": "Graphics Card",
+      "description": "The purpose of a graphics cards is to render graphics. Without a graphics card, your computer can not display any information, let alone function how you need it.",
+      "price": 2750,
+      "quantity": 177,
+      "minimumQuantity": 25
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/Fx6X81X/processor.png",
+      "name": "Processor",
+      "description": "The processor, also known as the CPU, provides the instructions and processing power the computer needs to do its work.",
+      "price": 3345,
+      "quantity": 373,
+      "minimumQuantity": 15
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/TcGWDTn/Ram.png",
+      "name": "RAM",
+      "description": "Random Access Memory (RAM) is a general-purpose memory that usually stores the user data in a program. RAM is volatile in the sense that it cannot retain data in the absence of power, i.e. data are lost after the removal of power.",
+      "price": 130,
+      "quantity": 767,
+      "minimumQuantity": 45
+    }
+]
