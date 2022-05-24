@@ -15,6 +15,15 @@ const SignIn = () => {
     //SIGN IN WITH EMAIL AND PASSWORD
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
+    //VALIDATION
+    let signinError;
+    if (Gerror || error) {
+        signinError = (
+            <p className="text-red-500 text-center">
+                <small> Error: {error?.message || Gerror?.message}</small>
+            </p>
+        );
+    }
     const {
         register,
         handleSubmit,
@@ -76,10 +85,11 @@ const SignIn = () => {
                                 },
                             })}
                         />
+                        {signinError}
                         <input
                             type="submit"
                             value="Sign In"
-                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold"
+                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold mt-3"
                         />
                         <p className="mt-3">
                             New to PC Builder?{" "}

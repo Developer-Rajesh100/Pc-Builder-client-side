@@ -4,7 +4,7 @@ const SingleProduct = ({ product }) => {
     const { image, name, description, price, quantity, minimumQuantity } =
         product;
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card bg-base-100 shadow-xl">
             <figure>
                 <img src={image} alt="Shoes" />
             </figure>
@@ -25,7 +25,9 @@ const SingleProduct = ({ product }) => {
                     <i> {minimumQuantity} </i>{" "}
                 </p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Add to Card</button>
+                    <button class="btn bg-purple-400 border-0">
+                        Add to Card
+                    </button>
                 </div>
             </div>
         </div>

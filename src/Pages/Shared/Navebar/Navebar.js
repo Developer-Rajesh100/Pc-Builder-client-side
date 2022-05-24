@@ -17,13 +17,10 @@ const Navebar = () => {
             </li>
 
             <li>
-                <Link to="/">About</Link>
+                <Link to="/about">About Me</Link>
             </li>
             <li>
-                <Link to="/">Blogs</Link>
-            </li>
-            <li>
-                <Link to="/">Blogs</Link>
+                <Link to="/blogs">Blogs</Link>
             </li>
             {user ? (
                 <li>
@@ -40,7 +37,7 @@ const Navebar = () => {
     );
 
     return (
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-100 w-full">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">

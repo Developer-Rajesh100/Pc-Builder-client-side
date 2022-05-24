@@ -1,10 +1,11 @@
 import React from "react";
+import "./Banner.css";
 
 const Banner = () => {
     return (
         <section className="">
             {/* <img src="https://i.ibb.co/f8kkVDn/banner.png" alt="" /> */}
-            <div className="bg-[url('https://i.ibb.co/h7yjD59/banner.png')] bg-no-repeath">
+            <div className="bg-[url('https://i.ibb.co/h7yjD59/banner.png')] bg-no-repeath bg-cover bg-center">
                 {/* <br />
                 <br />
                 <br />

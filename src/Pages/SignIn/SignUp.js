@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../FirebaseInit";
 import Swal from "sweetalert2";
+import { sendEmailVerification } from "firebase/auth";
 
 const SignUp = () => {
     //GOOGLE SIGN UP
@@ -19,8 +20,8 @@ const SignUp = () => {
     let signinError;
     if (Gerror || error) {
         signinError = (
-            <p className="text-red-500">
-                Error: {error?.message || Gerror?.message}
+            <p className="text-red-500 text-center">
+                <small>Error: {error?.message || Gerror?.message}</small>
             </p>
         );
     }
@@ -45,8 +46,12 @@ const SignUp = () => {
     }
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);
+        verifyEmail();
         console.log("Update Done");
         navigate("/");
+    };
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser).then(() => {});
     };
     return (
         <section className="h-screen flex items-center justify-center">
@@ -100,8 +105,8 @@ const SignUp = () => {
                         {signinError}
                         <input
                             type="submit"
-                            value="Sign In"
-                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold"
+                            value="Sign Up"
+                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold mt-3"
                         />
                         <p className="mt-3">
                             Already Have an Account?{" "}
