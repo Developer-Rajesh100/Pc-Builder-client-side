@@ -22,6 +22,9 @@ const Navebar = () => {
             <li>
                 <Link to="/blogs">Blogs</Link>
             </li>
+            <li>
+                <Link to="/addproduct">Add Product</Link>
+            </li>
             {user ? (
                 <li>
                     <Link to="/" onClick={logout}>
@@ -63,7 +66,9 @@ const Navebar = () => {
                         {naveItem}
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl">PC Builder</a>
+                <Link to="/" class="btn btn-ghost normal-case text-xl">
+                    PC Builder
+                </Link>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">{naveItem}</ul>

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../FirebaseInit";
 import Swal from "sweetalert2";
+import Loading from "../Shared/Loading/Loading";
 
 const SignIn = () => {
     //GOOGLE SIGN IN
@@ -16,6 +17,7 @@ const SignIn = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
     //VALIDATION
+
     let signinError;
     if (Gerror || error) {
         signinError = (
@@ -24,12 +26,14 @@ const SignIn = () => {
             </p>
         );
     }
+
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm();
+
     const navigate = useNavigate();
     if (Guser || user) {
         navigate("/");
@@ -42,6 +46,9 @@ const SignIn = () => {
             icon: "success",
             confirmButtonText: "OK",
         });
+    }
+    if (Gloading || loading) {
+        return <Loading></Loading>;
     }
     const onSubmit = (data) => {
         console.log(data);
@@ -89,7 +96,7 @@ const SignIn = () => {
                         <input
                             type="submit"
                             value="Sign In"
-                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold mt-3"
+                            class="input input-bordered w-full max-w-xs bg-purple-400 hover:bg-purple-600 text-white font-semibold mt-3"
                         />
                         <p className="mt-3">
                             New to PC Builder?{" "}

@@ -2,12 +2,12 @@ import React from "react";
 
 const About = () => {
     return (
-        <section className="h-screen flex items-center justify-center">
+        <section className="h-screen flex items-center justify-center my-32">
             <div class="card w-96 bg-base-100 shadow-xl">
                 <figure>
                     <img
                         className="rounded-full"
-                        src="https://i.ibb.co/GWh83kN/rajesh-jpg-to-png.png"
+                        src="https://i.ibb.co/V3pJw1P/me.png"
                         alt="Shoes"
                     />
                 </figure>
@@ -23,9 +23,9 @@ const About = () => {
                         শেখা হয়ে গিয়েছে এবং পরবর্তী তিন মাসের মধ্যে Redux, Next
                         js Typescript ইত্যাদি টেকনোলজি শেখা আমার লক্ষ্য।
                     </p>
-                    <div class="card-actions justify-end">
-                        <button class="btn bg-purple-400 border-0">
-                            Buy Now
+                    <div class="card-actions justify-end mt-3">
+                        <button class="btn bg-purple-400 border-0 hover:bg-purple-600">
+                            Visit Github
                         </button>
                     </div>
                 </div>

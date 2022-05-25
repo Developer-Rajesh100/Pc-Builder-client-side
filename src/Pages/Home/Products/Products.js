@@ -4,10 +4,11 @@ import SingleProduct from "./SingleProduct";
 const Products = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch("Products.json")
+        fetch("http://localhost:5000/product")
             .then((res) => res.json())
             .then((data) => setProducts(data));
     }, []);
+    // products.length = 3;
     return (
         <div>
             <div>
@@ -18,7 +19,7 @@ const Products = () => {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mb-48 gap-10">
                 {products.map((product) => (
                     <SingleProduct
-                        key={product.id}
+                        key={product._id}
                         product={product}
                     ></SingleProduct>
                 ))}

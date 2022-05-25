@@ -8,6 +8,7 @@ import {
 import auth from "../../FirebaseInit";
 import Swal from "sweetalert2";
 import { sendEmailVerification } from "firebase/auth";
+import Loading from "../Shared/Loading/Loading";
 
 const SignUp = () => {
     //GOOGLE SIGN UP
@@ -50,6 +51,9 @@ const SignUp = () => {
         console.log("Update Done");
         navigate("/");
     };
+    if (Gloading || loading) {
+        return <Loading></Loading>;
+    }
     const verifyEmail = () => {
         sendEmailVerification(auth.currentUser).then(() => {});
     };
@@ -106,7 +110,7 @@ const SignUp = () => {
                         <input
                             type="submit"
                             value="Sign Up"
-                            class="input input-bordered w-full max-w-xs bg-purple-400 text-white font-semibold mt-3"
+                            class="input input-bordered w-full max-w-xs bg-purple-400 hover:bg-purple-600 text-white font-semibold mt-3"
                         />
                         <p className="mt-3">
                             Already Have an Account?{" "}

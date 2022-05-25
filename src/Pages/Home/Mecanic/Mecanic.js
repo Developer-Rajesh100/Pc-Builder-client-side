@@ -15,9 +15,13 @@ const Mecanic = () => {
                         using our build your PC page and get the complete setup
                         delivered at your door step.
                     </p>
-                    <button class="btn bg-purple-400 border-0">
+                    <a
+                        href="https://www.linkedin.com/in/rajesh-mondal-51544922a/"
+                        target="_blank"
+                        class="btn bg-purple-400 border-0 hover:bg-purple-600"
+                    >
                         Contract Us
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
