@@ -12,6 +12,7 @@ import RequireAuth from "./Pages/RequireAuth";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import NotFound404 from "./Pages/Shared/NotFound404/NotFound404";
 import AddProduct from "./Pages/AddProduct/AddProduct";
+import ManageProducts from "./Pages/ManageProducts/ManageProducts";
 
 function App() {
     return (
@@ -39,6 +40,15 @@ function App() {
                     element={
                         <RequireAuth>
                             <AddProduct></AddProduct>
+                        </RequireAuth>
+                    }
+                ></Route>
+
+                <Route
+                    path="/manageproduct"
+                    element={
+                        <RequireAuth>
+                            <ManageProducts></ManageProducts>
                         </RequireAuth>
                     }
                 ></Route>

@@ -1,17 +1,26 @@
+import { data } from "autoprefixer";
 import React from "react";
 import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
+        const details = {
+            image: data.image,
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            quantity: data.quantity,
+            minimumQuantity: data.minimumQuantity,
+        };
+        console.log(details);
         const url = `http://localhost:5000/product`;
         fetch(url, {
             method: "POST",
             headers: {
-                "content-type": "application.json",
+                "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(details),
         })
             .then((res) => res.json())
             .then((result) => {

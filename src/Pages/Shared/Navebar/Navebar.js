@@ -22,9 +22,17 @@ const Navebar = () => {
             <li>
                 <Link to="/blogs">Blogs</Link>
             </li>
-            <li>
-                <Link to="/addproduct">Add Product</Link>
-            </li>
+
+            {user && (
+                <>
+                    <li>
+                        <Link to="/manageproduct">Manage Products</Link>
+                    </li>
+                    <li>
+                        <Link to="/addproduct">Add Product</Link>
+                    </li>
+                </>
+            )}
             {user ? (
                 <li>
                     <Link to="/" onClick={logout}>
