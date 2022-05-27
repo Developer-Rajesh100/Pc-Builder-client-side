@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../FirebaseInit";
 
 const ProductDetail = () => {
+    const [user, loading, error] = useAuthState(auth);
+    console.log(user);
+
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => console.log(data);
     const { productdetailId } = useParams();
@@ -36,6 +41,20 @@ const ProductDetail = () => {
                         className="flex flex-col items-center"
                         onSubmit={handleSubmit(onSubmit)}
                     >
+                        <input
+                            value={user?.displayName}
+                            className="drop-shadow-2xl my-4 w-1/2 px-3 py-2 rounded-lg"
+                            type="text"
+                            disabled
+                            {...register("name")}
+                        />
+                        <input
+                            value={user?.email}
+                            className="drop-shadow-2xl my-4 w-1/2 px-3 py-2 rounded-lg"
+                            type="email"
+                            disabled
+                            {...register("email")}
+                        />
                         <input
                             placeholder="Address"
                             className="drop-shadow-2xl my-4 w-1/2 px-3 py-2 rounded-lg"
