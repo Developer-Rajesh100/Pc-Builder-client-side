@@ -17,6 +17,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 
 function App() {
     return (
@@ -68,6 +69,10 @@ function App() {
                     <Route
                         path="myorders"
                         element={<MyOrders></MyOrders>}
+                    ></Route>
+                    <Route
+                        path="makeadmin"
+                        element={<MakeAdmin></MakeAdmin>}
                     ></Route>
                     <Route
                         path="myreview"
