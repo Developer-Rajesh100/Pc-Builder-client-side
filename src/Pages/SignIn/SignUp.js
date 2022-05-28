@@ -9,6 +9,7 @@ import auth from "../../FirebaseInit";
 import Swal from "sweetalert2";
 import { sendEmailVerification } from "firebase/auth";
 import Loading from "../Shared/Loading/Loading";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
     //GOOGLE SIGN UP
@@ -18,6 +19,9 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth);
     //VALIDATION
+
+    const [token] = useToken(Guser || user);
+
     let signinError;
     if (Gerror || error) {
         signinError = (
@@ -34,7 +38,7 @@ const SignUp = () => {
     } = useForm();
     const navigate = useNavigate();
     if (Guser || user) {
-        navigate("/");
+        // navigate("/");
     }
     const Swal = require("sweetalert2");
     if (Guser || user) {
@@ -45,11 +49,15 @@ const SignUp = () => {
             confirmButtonText: "OK",
         });
     }
+
+    if (token) {
+        navigate("/");
+    }
+
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);
         verifyEmail();
-        console.log("Update Done");
-        navigate("/");
+        // console.log("Update Done");
     };
     if (Gloading || loading) {
         return <Loading></Loading>;

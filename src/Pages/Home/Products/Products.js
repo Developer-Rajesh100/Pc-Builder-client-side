@@ -8,7 +8,7 @@ const Products = () => {
             .then((res) => res.json())
             .then((data) => setProducts(data));
     }, []);
-    // products.length = 3;
+    products.length = 3;
     return (
         <div>
             <div>

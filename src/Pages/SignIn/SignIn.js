@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../FirebaseInit";
 import Swal from "sweetalert2";
 import Loading from "../Shared/Loading/Loading";
+import useToken from "../../hooks/useToken";
 
 const SignIn = () => {
     //GOOGLE SIGN IN
@@ -17,6 +18,8 @@ const SignIn = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
     //VALIDATION
+
+    const [token] = useToken(Guser || user);
 
     let signinError;
     if (Gerror || error) {
@@ -35,7 +38,7 @@ const SignIn = () => {
     } = useForm();
 
     const navigate = useNavigate();
-    if (Guser || user) {
+    if (token) {
         navigate("/");
     }
     const Swal = require("sweetalert2");

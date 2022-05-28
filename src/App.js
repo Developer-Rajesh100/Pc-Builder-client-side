@@ -13,6 +13,10 @@ import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import NotFound404 from "./Pages/Shared/NotFound404/NotFound404";
 import AddProduct from "./Pages/AddProduct/AddProduct";
 import ManageProducts from "./Pages/ManageProducts/ManageProducts";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import AddReview from "./Pages/Dashboard/AddReview";
 
 function App() {
     return (
@@ -26,6 +30,7 @@ function App() {
                 <Route path="/signup" element={<SignUp></SignUp>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+                {/* PROCTED ROUTE */}
                 <Route
                     path="/productdetail/:productdetailId"
                     element={
@@ -34,7 +39,6 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-
                 <Route
                     path="/addproduct"
                     element={
@@ -43,7 +47,6 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-
                 <Route
                     path="/manageproduct"
                     element={
@@ -52,7 +55,25 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-
+                <Route
+                    path="/dashboard"
+                    element={
+                        <RequireAuth>
+                            <Dashboard></Dashboard>
+                        </RequireAuth>
+                    }
+                >
+                    {/* NASTED ROUTE */}
+                    <Route index element={<MyProfile></MyProfile>}></Route>
+                    <Route
+                        path="myorders"
+                        element={<MyOrders></MyOrders>}
+                    ></Route>
+                    <Route
+                        path="myreview"
+                        element={<AddReview></AddReview>}
+                    ></Route>
+                </Route>
                 <Route path="*" element={<NotFound404></NotFound404>}></Route>
             </Routes>
             <Footer></Footer>

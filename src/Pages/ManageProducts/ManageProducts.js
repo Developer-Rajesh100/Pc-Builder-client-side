@@ -28,39 +28,39 @@ const ManageProducts = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Image</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {products.map((product, index) => (
-                            <div key={product._id}>
-                                <tr>
-                                    <th>{index + 1}</th>
-                                    <td>
-                                        {" "}
-                                        <img
-                                            className="w-20"
-                                            src={product.image}
-                                            alt=""
-                                        />{" "}
-                                    </td>
-                                    <td> {product.name} </td>
-                                    <td> $ {product.price} </td>
-                                    <td> {product.quantity} </td>
-                                    <td>
-                                        <button
-                                            onClick={() =>
-                                                handleDelete(product._id)
-                                            }
-                                            class="btn btn-sm bg-red-400 hover:bg-red-600 py-0 border-0"
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            </div>
+                            <tr key={product._id}>
+                                <th>{index + 1}</th>
+                                <td>
+                                    {" "}
+                                    <img
+                                        className="w-20"
+                                        src={product.image}
+                                        alt=""
+                                    />{" "}
+                                </td>
+                                <td> {product.name} </td>
+                                <td> $ {product.price} </td>
+                                <td> {product.quantity} </td>
+                                <td>
+                                    <button
+                                        onClick={() =>
+                                            handleDelete(product._id)
+                                        }
+                                        class="btn btn-sm bg-red-400 hover:bg-red-600 py-0 border-0"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
                         ))}
                     </tbody>
                 </table>

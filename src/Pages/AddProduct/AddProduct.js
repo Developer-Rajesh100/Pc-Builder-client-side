@@ -1,8 +1,11 @@
 import { data } from "autoprefixer";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         const details = {
@@ -13,6 +16,15 @@ const AddProduct = () => {
             quantity: data.quantity,
             minimumQuantity: data.minimumQuantity,
         };
+
+        if (details) {
+            navigate("/");
+            Swal.fire({
+                title: "Successfully Added",
+                icon: "success",
+                confirmButtonText: "Cool",
+            });
+        }
         console.log(details);
         const url = `http://localhost:5000/product`;
         fetch(url, {
@@ -27,6 +39,7 @@ const AddProduct = () => {
                 console.log(result);
             });
     };
+
     return (
         <div className="h-screen">
             <h1 className="text-center text-5xl font-semibold my-12">
@@ -39,13 +52,15 @@ const AddProduct = () => {
                 <input
                     type="text"
                     placeholder="Product Image Url"
+                    required
                     className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     {...register("image")}
                 />
                 <input
                     type="text"
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     placeholder="Product Name"
+                    required
+                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     {...register("name")}
                 />
 
@@ -53,24 +68,28 @@ const AddProduct = () => {
                     className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Price"
+                    required
                     {...register("price")}
                 />
                 <input
                     className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Quantity"
+                    required
                     {...register("quantity")}
                 />
                 <input
                     className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Minimum Quantity"
+                    required
                     {...register("minimumQuantity")}
                 />
                 <textarea
                     type="text"
                     className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
                     placeholder="Product Short Description"
+                    required
                     {...register("description")}
                 />
                 <input

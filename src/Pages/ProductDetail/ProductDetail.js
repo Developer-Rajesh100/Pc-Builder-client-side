@@ -18,8 +18,25 @@ const ProductDetail = () => {
             .then((req) => req.json())
             .then((data) => setProduct(data));
     }, []);
-    const { image, name, description, price, quantity, minimumQuantity } =
+    const { _id, image, name, description, price, quantity, minimumQuantity } =
         product;
+    // const order = {
+    //     productID: _id,
+    //     name: name,
+    //     quantity: quantity,
+    //     user: user?.email,
+    // };
+    // fetch('http://localhost:5000/order', {
+    //     method: 'POST',
+    //     headers: {
+    //         'content-type' : 'application/json'
+    //     },
+    //     body: JSON.stringify(order)
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+
+    // })
     return (
         <div class="hero min-h-screen">
             <div class="hero-content flex-col lg:flex-row">

@@ -18,7 +18,7 @@ const SingleProduct = ({ product }) => {
                 <p className="text-justify">{description}</p>
                 <p>
                     {" "}
-                    <strong>Price:</strong> <i> {price} </i>{" "}
+                    <strong>Price:</strong> <i>$ {price} </i>{" "}
                 </p>
                 <p>
                     {" "}
