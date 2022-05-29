@@ -46,40 +46,40 @@ const AddProduct = () => {
                 Add Product
             </h1>{" "}
             <form
-                className="flex flex-col items-center drop-shadow-2xl p-"
+                className="flex flex-col items-center drop-shadow-2xl"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <input
                     type="text"
                     placeholder="Product Image Url"
                     required
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     {...register("image")}
                 />
                 <input
                     type="text"
                     placeholder="Product Name"
                     required
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     {...register("name")}
                 />
 
                 <input
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Price"
                     required
                     {...register("price")}
                 />
                 <input
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Quantity"
                     required
                     {...register("quantity")}
                 />
                 <input
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     type="number"
                     placeholder="Minimum Quantity"
                     required
@@ -87,13 +87,13 @@ const AddProduct = () => {
                 />
                 <textarea
                     type="text"
-                    className="drop-shadow-lg my-2 w-1/2 py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg my-2 w-full py-1 px-4 red rounded-lg"
                     placeholder="Product Short Description"
                     required
                     {...register("description")}
                 />
                 <input
-                    className="drop-shadow-lg w-1/6 mt-3 bg-purple-400 hover:bg-purple-600 hover:font-bold hover:text-white py-1 px-4 red rounded-lg"
+                    className="drop-shadow-lg w-full mt-3 bg-purple-400 hover:bg-purple-600 hover:font-bold hover:text-white py-1 px-4 red rounded-lg"
                     type="submit"
                     value="Add Product"
                 />

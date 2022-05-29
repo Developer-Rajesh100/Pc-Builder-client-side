@@ -41,19 +41,11 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-                <Route
+                {/* <Route
                     path="/addproduct"
                     element={
                         <RequireAuth>
                             <AddProduct></AddProduct>
-                        </RequireAuth>
-                    }
-                ></Route>
-                {/* <Route
-                    path="/manageproduct"
-                    element={
-                        <RequireAuth>
-                            <ManageProducts></ManageProducts>
                         </RequireAuth>
                     }
                 ></Route> */}
@@ -82,6 +74,10 @@ function App() {
                     <Route
                         path="manageproduct"
                         element={<ManageProducts></ManageProducts>}
+                    ></Route>
+                    <Route
+                        path="addproduct"
+                        element={<AddProduct></AddProduct>}
                     ></Route>
                 </Route>
                 <Route path="*" element={<NotFound404></NotFound404>}></Route>
