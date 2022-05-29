@@ -18,10 +18,11 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
+import RequireAdmin from "./Pages/SignIn/RequreAdmine";
 
 function App() {
     return (
-        <div className="mx-20">
+        <div>
             <Navebar></Navebar>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
@@ -48,14 +49,14 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-                <Route
+                {/* <Route
                     path="/manageproduct"
                     element={
                         <RequireAuth>
                             <ManageProducts></ManageProducts>
                         </RequireAuth>
                     }
-                ></Route>
+                ></Route> */}
                 <Route
                     path="/dashboard"
                     element={
@@ -77,6 +78,10 @@ function App() {
                     <Route
                         path="myreview"
                         element={<AddReview></AddReview>}
+                    ></Route>
+                    <Route
+                        path="manageproduct"
+                        element={<ManageProducts></ManageProducts>}
                     ></Route>
                 </Route>
                 <Route path="*" element={<NotFound404></NotFound404>}></Route>

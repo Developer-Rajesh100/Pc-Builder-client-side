@@ -21,8 +21,7 @@ const ManageProducts = () => {
         }
     };
     return (
-        <div className="h-screen">
-            <h1>Manage Your Products...</h1>
+        <div className="h-screen mx-20">
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

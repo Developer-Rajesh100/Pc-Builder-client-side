@@ -25,9 +25,9 @@ const MakeAdmin = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
+                            <th>Make Admin</th>
+                            {/* <th>Favorite Color</th> */}
                         </tr>
                     </thead>
                     <tbody>
