@@ -15,7 +15,7 @@ const Dashboard = () => {
                 class="drawer-toggle"
             />
             <div class="drawer-content flex flex-col items-center">
-                <h2 className="text-5xl font-semibold text-purple-700">
+                <h2 className="text-5xl my-12 font-semibold text-purple-700">
                     Dashboard
                 </h2>
                 <Outlet></Outlet>

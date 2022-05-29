@@ -18,7 +18,6 @@ const MakeAdmin = () => {
     console.log(users);
     return (
         <div>
-            Make Admin: {users?.length}
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     {/* <!-- head --> */}

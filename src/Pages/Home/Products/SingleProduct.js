@@ -2,8 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ product }) => {
-    const { _id, image, name, description, price, quantity, minimumQuantity } =
-        product;
+    const {
+        _id,
+        image,
+        name,
+        description,
+        price,
+        availableQuantity,
+        minimumQuantity,
+    } = product;
     const navigate = useNavigate();
     const navigateToProductDetail = (id) => {
         navigate(`/productdetail/${_id}`);
@@ -22,7 +29,8 @@ const SingleProduct = ({ product }) => {
                 </p>
                 <p>
                     {" "}
-                    <strong>Available Quantity:</strong> <i> {quantity} </i>{" "}
+                    <strong>Available Quantity:</strong>{" "}
+                    <i> {availableQuantity} </i>{" "}
                 </p>
                 <p>
                     {" "}

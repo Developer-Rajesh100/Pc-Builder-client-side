@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../FirebaseInit";
+import Swal from "sweetalert2";
 
 const ProductDetail = () => {
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
+    // console.log(user);
 
-    const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const { register, handleSubmit, reset } = useForm();
+    // const onSubmit = (data) => console.log(data);
     const { productdetailId } = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
@@ -18,25 +19,68 @@ const ProductDetail = () => {
             .then((req) => req.json())
             .then((data) => setProduct(data));
     }, []);
-    const { _id, image, name, description, price, quantity, minimumQuantity } =
-        product;
-    // const order = {
-    //     productID: _id,
-    //     name: name,
-    //     quantity: quantity,
-    //     user: user?.email,
-    // };
-    // fetch('http://localhost:5000/order', {
-    //     method: 'POST',
-    //     headers: {
-    //         'content-type' : 'application/json'
-    //     },
-    //     body: JSON.stringify(order)
-    // })
-    // .then(res => res.json())
-    // .then(data => {
+    const {
+        _id,
+        image,
+        name,
+        description,
+        price,
+        availableQuantity,
+        minimumQuantity,
+    } = product;
 
-    // })
+    //ON SUBMIT
+
+    const onSubmit = (data) => {
+        const quantity = data.quantity;
+        console.log(quantity);
+        const order = {
+            email: user?.email,
+            name: user?.displayName,
+            address: data.address,
+            phone: data.number,
+            quantity: data.quantity,
+
+            price: price,
+            pdName: name,
+        };
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(order),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Successfully Order!",
+                        icon: "success",
+                        confirmButtonText: "ok",
+                    });
+                    reset();
+
+                    // update quantity
+                    // const quantity = data.quantity;
+
+                    fetch(`http://localhost:5000/order/${_id}`, {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify({ quantity }),
+                    })
+                        .then((res) => res.json())
+                        .then((result) => {
+                            if (result.modifiedCount > 0) {
+                                console.log(result);
+                            }
+                        });
+                }
+            });
+    };
+
     return (
         <div class="hero min-h-screen">
             <div class="hero-content flex-col lg:flex-row">
@@ -48,7 +92,7 @@ const ProductDetail = () => {
                         <strong>Price: </strong> <i>${price}</i>
                     </p>
                     <p className="text-xl">
-                        <strong>Quantity: </strong> <i>{quantity}</i>
+                        <strong>Quantity: </strong> <i>{availableQuantity}</i>
                     </p>
                     <p className="text-xl">
                         <strong>MinimumQuantity: </strong>{" "}
@@ -76,7 +120,7 @@ const ProductDetail = () => {
                             placeholder="Address"
                             className="drop-shadow-2xl my-4 w-1/2 px-3 py-2 rounded-lg"
                             type="text"
-                            {...register("Address")}
+                            {...register("address")}
                         />
                         <input
                             placeholder="Quantity"

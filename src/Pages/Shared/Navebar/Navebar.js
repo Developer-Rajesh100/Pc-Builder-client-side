@@ -26,12 +26,12 @@ const Navebar = () => {
 
             {user && (
                 <>
-                    <li>
+                    {/* <li>
                         <Link to="/manageproduct">Manage Products</Link>
                     </li>
                     <li>
                         <Link to="/addproduct">Add Product</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/dashboard">Dashboard</Link>
                     </li>
