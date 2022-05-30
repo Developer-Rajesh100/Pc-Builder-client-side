@@ -7,14 +7,13 @@ import Swal from "sweetalert2";
 
 const ProductDetail = () => {
     const [user, loading, error] = useAuthState(auth);
-    // console.log(user);
 
     const { register, handleSubmit, reset } = useForm();
-    // const onSubmit = (data) => console.log(data);
+
     const { productdetailId } = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/product/${productdetailId}`;
+        const url = `https://agile-springs-55744.herokuapp.com/product/${productdetailId}`;
         fetch(url)
             .then((req) => req.json())
             .then((data) => setProduct(data));
@@ -44,7 +43,27 @@ const ProductDetail = () => {
             price: price,
             pdName: name,
         };
-        fetch("http://localhost:5000/order", {
+        if (minimumQuantity > quantity) {
+            return Swal.fire({
+                title: `Minimum Order Quantity is ${minimumQuantity}`,
+                icon: "error",
+                confirmButtonText: "ok",
+            });
+        }
+        if (quantity > availableQuantity) {
+            return Swal.fire({
+                title: `Available Order Quantity is ${availableQuantity}`,
+                icon: "error",
+                confirmButtonText: "ok",
+            });
+        } else {
+            Swal.fire({
+                title: "Successfully Order!",
+                icon: "success",
+                confirmButtonText: "ok",
+            });
+        }
+        fetch("https://agile-springs-55744.herokuapp.com/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -54,23 +73,18 @@ const ProductDetail = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.insertedId) {
-                    Swal.fire({
-                        title: "Successfully Order!",
-                        icon: "success",
-                        confirmButtonText: "ok",
-                    });
                     reset();
 
-                    // update quantity
-                    // const quantity = data.quantity;
-
-                    fetch(`http://localhost:5000/order/${_id}`, {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify({ quantity }),
-                    })
+                    fetch(
+                        `https://agile-springs-55744.herokuapp.com/order/${_id}`,
+                        {
+                            method: "PUT",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify({ quantity }),
+                        }
+                    )
                         .then((res) => res.json())
                         .then((result) => {
                             if (result.modifiedCount > 0) {
@@ -140,7 +154,6 @@ const ProductDetail = () => {
                             value="Buy Now"
                         />
                     </form>
-                    {/* <button class="btn btn-primary mt-5">Get Started</button> */}
                 </div>
             </div>
         </div>

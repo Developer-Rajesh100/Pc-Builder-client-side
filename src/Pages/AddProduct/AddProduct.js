@@ -26,7 +26,7 @@ const AddProduct = () => {
             });
         }
         console.log(details);
-        const url = `http://localhost:5000/product`;
+        const url = `https://agile-springs-55744.herokuapp.com/product`;
         fetch(url, {
             method: "POST",
             headers: {

@@ -9,7 +9,9 @@ const MakeAdmin = () => {
         isLoading,
         refetch,
     } = useQuery("users", () =>
-        fetch("http://localhost:5000/user").then((res) => res.json())
+        fetch("https://agile-springs-55744.herokuapp.com/user").then((res) =>
+            res.json()
+        )
     );
     if (isLoading) {
         return <Loading></Loading>;
